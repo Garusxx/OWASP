@@ -1,0 +1,48 @@
+.owasp {
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.owasp-header {
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  justify-content: center;
+
+  background: #0f172a;
+  padding: 20px;
+
+  z-index: 10;
+  border-bottom: 1px solid #1e293b;
+}
+
+.owasp-header h1 {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.owasp-section {
+  background: #020617;
+  border: 1px solid #1e293b;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+.owasp-section:hover {
+  border-color: #22c55e;
+}
+
+.owasp-section h2 {
+  margin-bottom: 10px;
+  color: #22c55e;
+}
+
+.owasp-section p {
+  color: #94a3b8;
+}
