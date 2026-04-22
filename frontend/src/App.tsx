@@ -1,9 +1,16 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+import Home from "./pages/Home"
+import Owasp from "./pages/Owasp"
 
 function App() {
   return (
-    <div>
-      <h1>Frontend działa 🚀</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/owasp" element={<Owasp />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
