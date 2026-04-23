@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type Options = {
   sectionSelector: string
@@ -12,6 +12,7 @@ function useSectionScroll({
   durationMs = 700
 }: Options) {
   const containerRef = useRef<HTMLDivElement | null>(null)
+  const [activeId, setActiveId] = useState<string>('')
 
   useEffect(() => {
     const container = containerRef.current
@@ -26,6 +27,21 @@ function useSectionScroll({
     const sections = Array.from(
       container.querySelectorAll<HTMLElement>(sectionSelector)
     )
+
+    const updateActiveSection = () => {
+      const scrollPosition = container.scrollTop
+      let currentSectionId = ''
+
+      for (const section of sections) {
+        if (scrollPosition >= section.offsetTop - section.clientHeight / 2) {
+          currentSectionId = section.id
+        }
+      }
+
+      if (currentSectionId) {
+        setActiveId(currentSectionId)
+      }
+    }
 
     const handleWheel = (event: WheelEvent) => {
       if (Math.abs(event.deltaY) < threshold || isAnimating || sections.length === 0) {
@@ -67,13 +83,22 @@ function useSectionScroll({
 
       unlockTimer = window.setTimeout(() => {
         isAnimating = false
+        updateActiveSection()
       }, durationMs)
     }
 
+    const handleScroll = () => {
+      updateActiveSection()
+    }
+
+    updateActiveSection()
+
     container.addEventListener('wheel', handleWheel, { passive: false })
+    container.addEventListener('scroll', handleScroll)
 
     return () => {
       container.removeEventListener('wheel', handleWheel)
+      container.removeEventListener('scroll', handleScroll)
 
       if (unlockTimer) {
         window.clearTimeout(unlockTimer)
@@ -81,7 +106,7 @@ function useSectionScroll({
     }
   }, [durationMs, sectionSelector, threshold])
 
-  return containerRef
+  return { containerRef, activeId }
 }
 
 export default useSectionScroll

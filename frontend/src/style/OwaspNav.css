@@ -15,23 +15,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 44px;
   height: 44px;
-
-  text-decoration: none;
-  color: white;
-  background: #111;
-  border: 1px solid #333;
   border-radius: 50%;
-
-  font-size: 14px;
-  font-weight: 700;
-
-  transition: 0.25s ease;
+  background: #111;
+  color: #aaa;
+  text-decoration: none;
+  border: 1px solid #333;
+  transition: all 0.25s ease;
 }
 
 .owasp-nav-link:hover {
   background: #e53935;
   transform: scale(1.08);
+}
+
+.owasp-nav-link.active {
+  background: #e53935;
+  color: white;
+  transform: scale(1.1);
 }

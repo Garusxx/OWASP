@@ -25,9 +25,9 @@ const owaspItems:OwaspItem[] = [
 ]
 
 function Owasp() {
-  const containerRef = useSectionScroll({
-    sectionSelector: '.owasp-section'
-  })
+  const { containerRef, activeId } = useSectionScroll({
+  sectionSelector: '.owasp-section'
+})
 
   return (
     <>
@@ -35,7 +35,7 @@ function Owasp() {
         <h1>OWASP Top 10</h1>
       </div>
 
-      <OwaspNav items={owaspItems}/>
+      <OwaspNav items={owaspItems} activeId={activeId} />
 
 
       <div ref={containerRef} className="owasp">
