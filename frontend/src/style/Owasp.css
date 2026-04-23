@@ -277,47 +277,6 @@
 }
 
 @media (max-width: 768px) {
-  .owasp-mode {
-    top: 84px;
-    left: 12px;
-    padding: 4px;
-  }
-
-  .owasp-mode button {
-    min-width: 120px;
-    padding: 9px 12px;
-    font-size: 0.72rem;
-  }
-
-  .owasp-mode .status-dot {
-    width: 8px;
-    height: 8px;
-  }
-}
-/* aktywny */
-.owasp-mode button.active {
-  background: var(--color-primary-soft);
-  color: white;
-}
-
-.owasp-mode button.active .dot {
-  opacity: 1;
-  box-shadow: 0 0 8px currentColor;
-}
-
-/* ========================= */
-/* SCROLLBAR */
-/* ========================= */
-
-.owasp::-webkit-scrollbar {
-  display: none;
-}
-
-/* ========================= */
-/* MOBILE */
-/* ========================= */
-
-@media (max-width: 768px) {
   .owasp-header {
     min-height: 76px;
     padding: 16px 20px;
@@ -344,8 +303,28 @@
   .owasp-mode {
     top: 84px;
     left: 12px;
+    padding: 4px;
     transform: scale(0.95);
   }
+
+  .owasp-mode button {
+    min-width: 120px;
+    padding: 9px 12px;
+    font-size: 0.72rem;
+  }
+
+  .owasp-mode .status-dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* ========================= */
+/* SCROLLBAR */
+/* ========================= */
+
+.owasp::-webkit-scrollbar {
+  display: none;
 }
 
 @keyframes headerFadeIn {
