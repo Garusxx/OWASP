@@ -1,13 +1,16 @@
 type Props = {
+  id: string
   title: string
   description: string
 }
 
-function OwaspSection({ title, description }: Props) {
+function OwaspSection({ id, title, description }: Props) {
   return (
-    <section className="owasp-section">
-      <h2>{title}</h2>
-      <p>{description}</p>
+    <section id={id} className="owasp-section">
+      <div className="owasp-section-content">
+        <h2>{title}</h2>
+        <p>{description}</p>
+      </div>
     </section>
   )
 }

@@ -1,18 +1,37 @@
-/* reset */
-* {
-  margin: 0;
-  padding: 0;
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-/* root */
-body {
-  font-family: system-ui, Arial, sans-serif;
-  background-color: #0f172a;
-  color: white;
+:root {
+  color-scheme: dark;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  background: #020617;
+  color: #e2e8f0;
 }
 
-/* container helper */
+body,
 #root {
   min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top, rgba(34, 197, 94, 0.12), transparent 30%),
+    linear-gradient(180deg, #0f172a 0%, #020617 100%);
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
 }
