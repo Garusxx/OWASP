@@ -48,15 +48,19 @@ function Owasp() {
         <button
           onClick={() => setIsSecure(true)}
           className={isSecure ? "active" : ""}
+          aria-pressed={isSecure}
         >
-          🔒 Secure
+          <span className="status-dot" />
+          <span className="mode-label">Protected</span>
         </button>
 
         <button
           onClick={() => setIsSecure(false)}
           className={!isSecure ? "active" : ""}
+          aria-pressed={!isSecure}
         >
-          🔓 Vulnerable
+          <span className="status-dot" />
+          <span className="mode-label">Exposed</span>
         </button>
       </div>
 

@@ -1,3 +1,8 @@
+.owasp-header h1,
+.owasp-mode button {
+  font-family: "JetBrains Mono", monospace;
+}
+
 .owasp {
   height: calc(100vh - 88px);
   overflow-y: auto;
@@ -177,55 +182,127 @@
   left: 24px;
   z-index: 1100;
 
-  display: flex;
-  padding: 4px;
+  display: inline-flex;
+  gap: 6px;
+  padding: 6px;
 
-  border-radius: 14px;
-
+  border-radius: 16px;
   background: var(--header-bg);
   backdrop-filter: blur(12px);
 
   border: 1px solid var(--nav-border);
-
   box-shadow: 0 10px 30px rgba(2, 6, 23, 0.4);
 }
 
 .owasp-mode button {
   position: relative;
 
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 150px;
+  padding: 10px 16px;
+
   border: none;
+  border-radius: 12px;
   background: transparent;
   color: var(--nav-text);
 
-  padding: 8px 14px;
-  border-radius: 10px;
-
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 
   cursor: pointer;
-
-  transition: all 0.25s ease;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .owasp-mode button:hover {
   color: white;
 }
 
+.owasp-mode .status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.35;
+  transition:
+    opacity 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.owasp-mode .mode-label {
+  position: relative;
+  top: 1px;
+}
+
+/* aktywny stan */
+.owasp-mode button.active {
+  background: var(--color-primary-soft);
+  color: white;
+  box-shadow:
+    inset 0 0 0 1px var(--color-primary-soft),
+    0 0 18px rgba(2, 6, 23, 0.16);
+}
+
+.owasp-mode button.active .status-dot {
+  opacity: 1;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px currentColor;
+}
+
+/* dolny pasek aktywnego statusu */
+.owasp-mode button.active::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 6px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--color-primary);
+}
+
+/* focus accessibility */
+.owasp-mode button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .owasp-mode {
+    top: 84px;
+    left: 12px;
+    padding: 4px;
+  }
+
+  .owasp-mode button {
+    min-width: 120px;
+    padding: 9px 12px;
+    font-size: 0.72rem;
+  }
+
+  .owasp-mode .status-dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+/* aktywny */
 .owasp-mode button.active {
   background: var(--color-primary-soft);
   color: white;
 }
 
-.owasp-mode button.active::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 10px;
-
-  box-shadow: 0 0 12px var(--color-primary-soft);
-  pointer-events: none;
+.owasp-mode button.active .dot {
+  opacity: 1;
+  box-shadow: 0 0 8px currentColor;
 }
 
 /* ========================= */
