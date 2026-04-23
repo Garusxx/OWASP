@@ -1,3 +1,15 @@
+.owasp {
+  height: calc(100vh - 88px);
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  scroll-snap-type: y mandatory;
+}
+
+/* ========================= */
+/* HEADER */
+/* ========================= */
+
 .owasp-header {
   position: sticky;
   top: 0;
@@ -9,28 +21,78 @@
 
   min-height: 88px;
   padding: 20px 24px;
-  background: rgba(15, 23, 42, 0.9);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
-  box-shadow: 0 16px 32px rgba(2, 6, 23, 0.35);
+
+  background: var(--header-bg);
+  backdrop-filter: blur(16px);
+
+  border-bottom: 1px solid var(--header-border);
+
+  box-shadow:
+    0 16px 32px rgba(2, 6, 23, 0.45),
+    inset 0 -1px 0 var(--header-border);
+
+  isolation: isolate;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.owasp-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  height: 2px;
+  width: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-primary),
+    transparent
+  );
+  animation: headerLineGlow 3s ease-in-out infinite;
+
+  opacity: 0.6;
 }
 
 .owasp-header h1 {
   margin: 0;
   text-align: center;
-  color: #f8fafc;
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
+
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  font-weight: 700;
+  line-height: 1.1;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+
+  color: var(--text-main);
+
+  position: relative;
+  z-index: 1;
+
+  animation: headerFadeIn 0.7s ease;
 }
 
-.owasp {
-  height: calc(100vh - 88px);
-  overflow-y: auto;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  scroll-snap-type: y mandatory;
+.owasp-header h1::after {
+  content: "OWASP Top 10";
+  position: absolute;
+  inset: 0;
+
+  color: var(--color-primary);
+  opacity: 0.06;
+  filter: blur(5px);
+
+  pointer-events: none;
+  z-index: -1;
 }
+
+/* ========================= */
+/* SEKCJE */
+/* ========================= */
 
 .owasp-section {
   min-height: calc(100vh - 88px);
@@ -41,41 +103,142 @@
   align-items: center;
 
   padding: 48px 24px;
+
   background:
-    radial-gradient(circle at top left, rgba(34, 197, 94, 0.12), transparent 28%),
-    linear-gradient(135deg, #0f172a, #020617 65%);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    radial-gradient(
+      circle at top left,
+      var(--color-primary-glow),
+      transparent 28%
+    ),
+    var(--section-bg);
+
+  border-bottom: 1px solid var(--section-border);
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
 }
+
+/* ========================= */
+/* CARD */
+/* ========================= */
 
 .owasp-section-content {
   max-width: 860px;
   width: 100%;
   text-align: left;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.92));
-  border: 1px solid rgba(34, 197, 94, 0.18);
+
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: 24px;
+
   padding: 40px;
+
   box-shadow: 0 24px 60px rgba(2, 6, 23, 0.45);
+
+  overflow: hidden;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .owasp-section-content h2 {
   margin: 0 0 18px;
+
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1.1;
-  color: #4ade80;
+
+  color: var(--color-primary);
+
+  transition: color 0.3s ease;
 }
 
 .owasp-section-content p {
   margin: 0;
   max-width: 62ch;
+
   font-size: clamp(1.05rem, 2vw, 1.2rem);
   line-height: 1.8;
-  color: #cbd5e1;
+
+  color: var(--text-secondary);
+
+  transition: color 0.3s ease;
 }
+
+/* ========================= */
+/* TOGGLE (SECURE / VULNERABLE) */
+/* ========================= */
+
+.owasp-mode {
+  position: fixed;
+  top: 96px;
+  left: 24px;
+  z-index: 1100;
+
+  display: flex;
+  padding: 4px;
+
+  border-radius: 14px;
+
+  background: var(--header-bg);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid var(--nav-border);
+
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.4);
+}
+
+.owasp-mode button {
+  position: relative;
+
+  border: none;
+  background: transparent;
+  color: var(--nav-text);
+
+  padding: 8px 14px;
+  border-radius: 10px;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.owasp-mode button:hover {
+  color: white;
+}
+
+.owasp-mode button.active {
+  background: var(--color-primary-soft);
+  color: white;
+}
+
+.owasp-mode button.active::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+
+  box-shadow: 0 0 12px var(--color-primary-soft);
+  pointer-events: none;
+}
+
+/* ========================= */
+/* SCROLLBAR */
+/* ========================= */
 
 .owasp::-webkit-scrollbar {
   display: none;
 }
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
 
 @media (max-width: 768px) {
   .owasp-header {
@@ -99,5 +262,32 @@
 
   .owasp-section-content h2 {
     margin-bottom: 14px;
+  }
+
+  .owasp-mode {
+    top: 84px;
+    left: 12px;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes headerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes headerLineGlow {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.75;
   }
 }

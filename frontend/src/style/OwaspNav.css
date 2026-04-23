@@ -1,37 +1,135 @@
 .owasp-nav {
   position: fixed;
-  left: 20px;
+  left: 24px;
   top: 50%;
   transform: translateY(-50%);
 
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 
-  z-index: 1000;
+  z-index: 1050;
 }
 
 .owasp-nav-link {
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: #111;
-  color: #aaa;
+
+  width: 52px;
+  height: 52px;
+
+  border-radius: 14px;
   text-decoration: none;
-  border: 1px solid #333;
-  transition: all 0.25s ease;
+
+  background: var(--nav-bg);
+  color: var(--nav-text);
+  border: 1px solid var(--nav-border);
+  backdrop-filter: blur(10px);
+
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.28);
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .owasp-nav-link:hover {
-  background: #e53935;
-  transform: scale(1.08);
+  transform: translateX(4px);
+  background: var(--nav-bg-hover);
+  border-color: var(--color-primary);
+  color: white;
+  box-shadow:
+    0 0 0 1px var(--color-primary-soft),
+    0 14px 28px rgba(2, 6, 23, 0.35);
 }
 
 .owasp-nav-link.active {
-  background: #e53935;
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary);
   color: white;
-  transform: scale(1.1);
+  box-shadow:
+    0 0 0 1px var(--color-primary),
+    0 0 18px var(--color-primary-soft),
+    0 14px 28px rgba(2, 6, 23, 0.35);
+  transform: translateX(8px);
+}
+
+.owasp-nav-link::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%) scaleY(0);
+
+  width: 3px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--color-primary);
+
+  transition: transform 0.25s ease;
+}
+
+.owasp-nav-link:hover::before,
+.owasp-nav-link.active::before {
+  transform: translateY(-50%) scaleY(1);
+}
+
+.owasp-nav-link::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 68px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+
+  padding: 8px 12px;
+  border-radius: 10px;
+
+  background: var(--nav-tooltip-bg);
+  color: var(--text-main);
+  border: 1px solid var(--nav-border);
+
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 12px 24px rgba(2, 6, 23, 0.35);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.owasp-nav-link:hover::after,
+.owasp-nav-link.active::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .owasp-nav {
+    left: 12px;
+    gap: 10px;
+  }
+
+  .owasp-nav-link {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    font-size: 0.82rem;
+  }
+
+  .owasp-nav-link::after {
+    display: none;
+  }
 }

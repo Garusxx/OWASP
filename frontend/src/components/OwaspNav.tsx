@@ -1,10 +1,10 @@
-import type { OwaspItem } from '../types/owasp'
-import '../style/OwaspNav.css'
+import type { OwaspItem } from "../types/owasp";
+import "../style/OwaspNav.css";
 
 type Props = {
-  items: OwaspItem[]
-  activeId: string
-}
+  items: OwaspItem[];
+  activeId: string;
+};
 
 function OwaspNav({ items, activeId }: Props) {
   return (
@@ -13,13 +13,14 @@ function OwaspNav({ items, activeId }: Props) {
         <a
           key={item.id}
           href={`#${item.id}`}
-          className={`owasp-nav-link ${activeId === item.id ? 'active' : ''}`}
+          data-label={item.title}
+          className={`owasp-nav-link ${activeId === item.id ? "active" : ""}`}
         >
-          {item.title.split(':')[0]}
+          {item.title.split(":")[0]}
         </a>
       ))}
     </nav>
-  )
+  );
 }
 
-export default OwaspNav
+export default OwaspNav;
