@@ -1,0 +1,61 @@
+@keyframes headerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes headerLineGlow {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
+@keyframes lockPulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+  35% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.32);
+  }
+}
+
+@keyframes lockBodyFlash {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  45% {
+    filter: brightness(1.22);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .owasp-page::before,
+  .owasp-header,
+  .owasp-header h1,
+  .owasp-section,
+  .owasp-section-content,
+  .owasp-section-content h2,
+  .owasp-section-content p,
+  .owasp-lock-toggle,
+  .lock-shackle,
+  .lock-body,
+  .lock-pulse {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

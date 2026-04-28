@@ -59,6 +59,14 @@ body {
     var(--bg-gradient);
   color: var(--text-main);
   scrollbar-width: none;
+  transition:
+    background 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.theme-animating {
+  filter: saturate(1.08) contrast(1.03);
 }
 
 html::-webkit-scrollbar,

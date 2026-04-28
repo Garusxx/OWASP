@@ -1,0 +1,83 @@
+.owasp-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 88px;
+  padding: 20px 24px;
+
+  background: var(--header-bg);
+  backdrop-filter: blur(16px);
+
+  border-bottom: 1px solid var(--header-border);
+
+  box-shadow:
+    0 16px 32px rgba(2, 6, 23, 0.45),
+    inset 0 -1px 0 var(--header-border);
+
+  isolation: isolate;
+
+  transition:
+    background 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.owasp-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  height: 2px;
+  width: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-primary),
+    transparent
+  );
+  animation: headerLineGlow 3s ease-in-out infinite;
+
+  opacity: 0.6;
+}
+
+.owasp-header h1 {
+  margin: 0;
+  text-align: center;
+
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: var(--text-main);
+
+  position: relative;
+  z-index: 1;
+
+  animation: headerFadeIn 0.7s ease;
+  transition:
+    color 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    text-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.owasp-header h1::after {
+  content: "OWASP Top 10";
+  position: absolute;
+  inset: 0;
+
+  color: var(--color-primary);
+  opacity: 0.06;
+  filter: blur(5px);
+
+  pointer-events: none;
+  z-index: -1;
+}
