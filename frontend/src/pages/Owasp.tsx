@@ -8,26 +8,33 @@ import OwaspSection from "../components/OwaspSection";
 import useSectionScroll from "../hooks/useSectionScroll";
 import OwaspNav from "../components/OwaspNav";
 import type { OwaspItem } from "../types/owasp";
+
 import { useEffect, useRef, useState } from "react";
+import type { ReactNode } from "react";
+
+import BrokenAccessControlSection from "../components/owasp/BrokenAccessControlSection ";
+import CryptographicFailuresSection from "../components/owasp/CryptographicFailuresSection ";
+import InjectionSection from "../components/owasp/InjectionSection ";
 
 const owaspItems: OwaspItem[] = [
   {
     id: "broken-access-control",
     title: "A1: Broken Access Control",
-    description: "Access control enforces what users are allowed to do.",
   },
   {
     id: "cryptographic-failures",
     title: "A2: Cryptographic Failures",
-    description: "Weak or missing cryptography can expose sensitive data.",
   },
   {
     id: "injection",
     title: "A3: Injection",
-    description:
-      "Injection happens when untrusted data is sent to an interpreter.",
   },
 ];
+const sectionComponents: Record<OwaspItem["id"], ReactNode> = {
+  "broken-access-control": <BrokenAccessControlSection />,
+  "cryptographic-failures": <CryptographicFailuresSection />,
+  injection: <InjectionSection />,
+};
 
 function Owasp() {
   const { containerRef, activeId } = useSectionScroll({
@@ -52,7 +59,7 @@ function Owasp() {
       document.body.classList.remove(
         "theme-secure",
         "theme-vulnerable",
-        "theme-animating"
+        "theme-animating",
       );
     };
   }, []);
@@ -85,7 +92,11 @@ function Owasp() {
 
       <OwaspNav items={owaspItems} activeId={activeId} />
 
-      <div className="owasp-mode" role="group" aria-label="Security mode switch">
+      <div
+        className="owasp-mode"
+        role="group"
+        aria-label="Security mode switch"
+      >
         <button
           type="button"
           onClick={handleModeToggle}
@@ -107,19 +118,18 @@ function Owasp() {
 
           <span className="lock-copy">
             <span className="lock-eyebrow">Security Mode</span>
-            <span className="lock-status">{isSecure ? "Protected" : "Exposed"}</span>
+            <span className="lock-status">
+              {isSecure ? "Protected" : "Exposed"}
+            </span>
           </span>
         </button>
       </div>
 
       <div ref={containerRef} className="owasp">
         {owaspItems.map((item) => (
-          <OwaspSection
-            key={item.id}
-            id={item.id}
-            title={item.title}
-            description={item.description}
-          />
+          <OwaspSection key={item.id} id={item.id} title={item.title}>
+            {sectionComponents[item.id]}
+          </OwaspSection>
         ))}
       </div>
     </div>

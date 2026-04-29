@@ -1,18 +1,21 @@
-type Props = {
-  id: string
-  title: string
-  description: string
-}
+import type { ReactNode } from "react";
 
-function OwaspSection({ id, title, description }: Props) {
+type Props = {
+  id: string;
+  title: string;
+  children?: ReactNode;
+};
+
+function OwaspSection({ id, title, children }: Props) {
   return (
     <section id={id} className="owasp-section">
+      <h2 className="owasp-section-title">{title}</h2>
+
       <div className="owasp-section-content">
-        <h2>{title}</h2>
-        <p>{description}</p>
+        <div className="owasp-content">{children}</div>
       </div>
     </section>
-  )
+  );
 }
 
-export default OwaspSection
+export default OwaspSection;
