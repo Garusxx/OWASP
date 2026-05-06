@@ -1,0 +1,249 @@
+.bac-layout {
+  display: grid;
+  grid-template-columns: 3fr 2fr; /* 🔥 bardziej poziomo */
+  gap: 40px;
+  align-items: start;
+}
+.bac-main,
+.bac-challenge-full {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bac-header h3,
+.bac-side h4,
+.bac-response h4,
+.bac-challenge-header h3 {
+  margin: 0;
+  color: var(--color-primary);
+}
+
+.bac-header p,
+.bac-side p,
+.bac-challenge-terminal span {
+  color: var(--text-secondary);
+}
+
+.bac-header p {
+  margin: 8px 0 0;
+  line-height: 1.7;
+}
+
+.bac-controls {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.bac-controls label {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.bac-controls select {
+  margin-left: 10px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-primary);
+  color-scheme: dark;
+}
+
+.bac-controls select option {
+  background: #0f172a;
+  color: #fff;
+}
+
+.bac-controls select:focus,
+.bac-challenge-terminal input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary-glow);
+}
+
+.bac-controls button,
+.bac-challenge-terminal button,
+.bac-back-button {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  background: var(--color-primary);
+  color: black;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.bac-controls button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.bac-request,
+.bac-response,
+.bac-side,
+.bac-challenge-result {
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.bac-request {
+  padding: 14px 18px;
+  font-family: monospace;
+  overflow-x: auto;
+}
+
+.bac-response {
+  padding: 20px;
+}
+
+.bac-response h4 {
+  margin-bottom: 14px;
+}
+
+.bac-response pre,
+.bac-challenge-result pre {
+  margin: 0;
+  overflow-x: auto;
+  line-height: 1.7;
+  font-size: 0.9rem;
+}
+
+.bac-explanation {
+  padding: 16px 18px;
+  border-radius: 14px;
+  line-height: 1.7;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.bac-explanation p {
+  margin: 0;
+}
+
+.bac-side {
+  padding: 22px;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.bac-side h4 {
+  margin-bottom: 14px;
+  font-size: 1.15rem;
+}
+
+.bac-side p {
+  margin: 0 0 16px;
+}
+
+.bac-side code {
+  padding: 3px 7px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.bac-side-note {
+  margin-top: 18px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.bac-attack-info {
+  margin-top: 16px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.bac-exploit-button {
+  width: 100%;
+  margin-top: 18px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: #ef4444;
+  color: white;
+  font-weight: 800;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.bac-exploit-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.45);
+}
+
+.bac-challenge-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.bac-back-button {
+  background: var(--card-border);
+  color: var(--text-primary);
+}
+
+.bac-challenge-terminal {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.bac-challenge-terminal span {
+  font-family: monospace;
+  font-weight: 700;
+}
+
+.bac-challenge-terminal input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-primary);
+  font-family: monospace;
+}
+
+.bac-challenge-result {
+  padding: 18px;
+}
+
+.bac-side a {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.bac-side a:hover {
+  text-decoration: underline;
+}
+
+.bac-side a:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary-glow);
+  border-radius: 4px;
+}
+
+@media (max-width: 900px) {
+  .bac-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .bac-side {
+    padding: 18px;
+  }
+
+  .bac-challenge-terminal {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

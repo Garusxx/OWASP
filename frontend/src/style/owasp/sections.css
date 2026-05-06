@@ -25,7 +25,6 @@
     transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* 🔥 TYTUŁ NA GÓRZE */
 .owasp-section-title {
   margin: 0 0 32px;
 
@@ -41,9 +40,9 @@
     text-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* KARTA */
+
 .owasp-section-content {
-  max-width: 860px;
+  max-width: 1200px;
   width: 100%;
 
   background: var(--card-bg);

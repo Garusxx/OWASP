@@ -10,7 +10,7 @@ import OwaspNav from "../components/OwaspNav";
 import type { OwaspItem } from "../types/owasp";
 
 import { useEffect, useRef, useState } from "react";
-import type { ReactNode } from "react";
+import type { ComponentType } from "react";
 
 import BrokenAccessControlSection from "../components/owasp/BrokenAccessControlSection ";
 import CryptographicFailuresSection from "../components/owasp/CryptographicFailuresSection ";
@@ -30,10 +30,18 @@ const owaspItems: OwaspItem[] = [
     title: "A3: Injection",
   },
 ];
-const sectionComponents: Record<OwaspItem["id"], ReactNode> = {
-  "broken-access-control": <BrokenAccessControlSection />,
-  "cryptographic-failures": <CryptographicFailuresSection />,
-  injection: <InjectionSection />,
+
+type SectionProps = {
+  isSecure: boolean;
+};
+
+const sectionComponents: Record<
+  OwaspItem["id"],
+  ComponentType<SectionProps>
+> = {
+  "broken-access-control": BrokenAccessControlSection,
+  "cryptographic-failures": CryptographicFailuresSection,
+  injection: InjectionSection,
 };
 
 function Owasp() {
@@ -128,7 +136,10 @@ function Owasp() {
       <div ref={containerRef} className="owasp">
         {owaspItems.map((item) => (
           <OwaspSection key={item.id} id={item.id} title={item.title}>
-            {sectionComponents[item.id]}
+            {(() => {
+              const Component = sectionComponents[item.id];
+              return <Component isSecure={isSecure} />;
+            })()}
           </OwaspSection>
         ))}
       </div>
