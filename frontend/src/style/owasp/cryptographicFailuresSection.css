@@ -1,0 +1,173 @@
+.crypto-layout {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.crypto-main,
+.crypto-challenge {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.crypto-main h3,
+.crypto-side h4,
+.crypto-challenge-header h3,
+.crypto-storage-preview h4 {
+  margin: 0;
+  color: var(--color-primary);
+}
+
+.crypto-main p,
+.crypto-side p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.crypto-side {
+  padding: 22px;
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.045);
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.crypto-side-note {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.crypto-attack-info {
+  color: var(--text-secondary);
+}
+
+.crypto-start-button {
+  width: 100%;
+
+  padding: 12px 14px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #ef4444;
+  color: white;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.crypto-start-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.4);
+}
+
+/* ===== CHALLENGE ===== */
+
+.crypto-challenge {
+  gap: 28px;
+}
+
+.crypto-challenge-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.crypto-back-button {
+  padding: 10px 14px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: var(--card-border);
+  color: var(--text-primary);
+
+  cursor: pointer;
+}
+
+/* ===== FORM ===== */
+
+.crypto-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.crypto-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  color: var(--text-secondary);
+}
+
+.crypto-form input {
+  padding: 12px 14px;
+
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+.crypto-form input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary-glow);
+}
+
+.crypto-save-button {
+  width: fit-content;
+
+  padding: 10px 14px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: var(--color-primary);
+  color: black;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+/* ===== STORAGE PREVIEW ===== */
+
+.crypto-storage-preview {
+  padding: 18px;
+
+  border-radius: 16px;
+  border: 1px solid var(--card-border);
+
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.crypto-storage-preview pre {
+  margin: 0;
+  overflow-x: auto;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 900px) {
+  .crypto-layout {
+    grid-template-columns: 1fr;
+  }
+}

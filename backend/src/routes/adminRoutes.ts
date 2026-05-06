@@ -16,7 +16,7 @@ router.get("/secret", async (req, res) => {
 
   const [rows] = await db.query<DbUser[]>(
     "SELECT id, username, email, role FROM users WHERE id = ?",
-    [requestedUserId]
+    [requestedUserId],
   );
 
   const user = rows[0];
@@ -37,7 +37,7 @@ router.get("/secret-secure", async (req, res) => {
 
   const [rows] = await db.query<DbUser[]>(
     "SELECT id, username, email, role FROM users WHERE id = ?",
-    [loggedUser.id]
+    [loggedUser.id],
   );
 
   const user = rows[0];
