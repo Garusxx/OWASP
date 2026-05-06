@@ -1,15 +1,17 @@
 .injection-layout {
   display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 40px;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 2.5rem;
   align-items: start;
+  min-width: 0;
 }
 
 .injection-main,
 .injection-challenge {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1.5rem;
+  min-width: 0;
 }
 
 .injection-main h3,
@@ -27,19 +29,20 @@
 }
 
 .injection-side {
-  padding: 22px;
-  border-radius: 16px;
+  padding: 1.375rem;
+  border-radius: 1rem;
   border: 1px solid var(--card-border);
   background: rgba(255, 255, 255, 0.045);
+  min-width: 0;
 
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .injection-side-note {
-  padding: 12px 14px;
-  border-radius: 12px;
+  padding: 0.75rem 0.875rem;
+  border-radius: 0.75rem;
   background: rgba(255, 255, 255, 0.04);
 
   font-weight: 700;
@@ -53,10 +56,10 @@
 .injection-start-button {
   width: 100%;
 
-  padding: 12px 14px;
+  padding: 0.75rem 0.875rem;
 
   border: none;
-  border-radius: 12px;
+  border-radius: 0.75rem;
 
   background: #ef4444;
   color: white;
@@ -71,14 +74,14 @@
 }
 
 .injection-start-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.4);
+  transform: translateY(-0.0625rem);
+  box-shadow: 0 0.25rem 1rem rgba(239, 68, 68, 0.4);
 }
 
 /* ===== CHALLENGE ===== */
 
 .injection-challenge {
-  gap: 28px;
+  gap: 1.75rem;
 }
 
 .injection-challenge-header {
@@ -88,10 +91,10 @@
 }
 
 .injection-back-button {
-  padding: 10px 14px;
+  padding: 0.625rem 0.875rem;
 
   border: none;
-  border-radius: 10px;
+  border-radius: 0.625rem;
 
   background: var(--card-border);
   color: var(--text-primary);
@@ -101,7 +104,7 @@
 
 /* ===== RESPONSIVE ===== */
 
-@media (max-width: 900px) {
+@media (max-width: 56.25rem) {
   .injection-layout {
     grid-template-columns: 1fr;
   }

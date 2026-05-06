@@ -7,16 +7,16 @@
   justify-content: center;
   align-items: center;
 
-  min-height: 88px;
-  padding: 20px 24px;
+  min-height: 5.5rem;
+  padding: 1.25rem 1.5rem;
 
   background: var(--header-bg);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(1rem);
 
   border-bottom: 1px solid var(--header-border);
 
   box-shadow:
-    0 16px 32px rgba(2, 6, 23, 0.45),
+    0 1rem 2rem rgba(2, 6, 23, 0.45),
     inset 0 -1px 0 var(--header-border);
 
   isolation: isolate;
@@ -34,7 +34,7 @@
   bottom: 0;
   left: 0;
 
-  height: 2px;
+  height: 0.125rem;
   width: 100%;
 
   background: linear-gradient(
@@ -76,7 +76,7 @@
 
   color: var(--color-primary);
   opacity: 0.06;
-  filter: blur(5px);
+  filter: blur(0.3125rem);
 
   pointer-events: none;
   z-index: -1;

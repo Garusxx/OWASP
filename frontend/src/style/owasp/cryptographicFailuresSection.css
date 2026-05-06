@@ -1,14 +1,16 @@
 .crypto-layout {
   display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 40px;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 2.5rem;
   align-items: start;
+  min-width: 0;
 }
 
 .crypto-main {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1.5rem;
+  min-width: 0;
 }
 
 .crypto-main h3,
@@ -38,7 +40,7 @@
 .crypto-challenge-full,
 .crypto-challenge-card,
 .crypto-challenge-result {
-  border-radius: 16px;
+  border-radius: 1rem;
   border: 1px solid var(--card-border);
   background: rgba(255, 255, 255, 0.045);
 }
@@ -48,36 +50,39 @@
 .crypto-side,
 .crypto-challenge-card,
 .crypto-challenge-result {
-  padding: 22px;
+  padding: 1.375rem;
+  min-width: 0;
 }
 
 .crypto-form-card {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 1.125rem;
 }
 
 .crypto-form-card label {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
   color: var(--text-secondary);
 }
 
 .crypto-form-card input,
 .crypto-challenge-form input {
-  padding: 12px 14px;
-  border-radius: 10px;
+  padding: 0.75rem 0.875rem;
+  border-radius: 0.625rem;
   border: 1px solid var(--card-border);
   background: var(--card-bg);
   color: var(--text-primary);
+  width: 100%;
+  min-width: 0;
 }
 
 .crypto-form-card input:focus,
 .crypto-challenge-form input:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px var(--color-primary-glow);
+  box-shadow: 0 0 0 0.125rem var(--color-primary-glow);
 }
 
 /* ===== BUTTONS ===== */
@@ -86,7 +91,7 @@
 .crypto-start-button,
 .crypto-challenge-form button {
   border: none;
-  border-radius: 12px;
+  border-radius: 0.75rem;
   font-weight: 800;
   cursor: pointer;
   transition:
@@ -96,14 +101,14 @@
 
 .crypto-save-button {
   width: fit-content;
-  padding: 12px 16px;
+  padding: 0.75rem 1rem;
   background: var(--color-primary);
   color: black;
 }
 
 .crypto-start-button,
 .crypto-challenge-form button {
-  padding: 14px 16px;
+  padding: 0.875rem 1rem;
   background: #ef4444;
   color: white;
 }
@@ -111,16 +116,16 @@
 .crypto-save-button:hover,
 .crypto-start-button:hover,
 .crypto-challenge-form button:hover {
-  transform: translateY(-1px);
+  transform: translateY(-0.0625rem);
 }
 
 .crypto-save-button:hover {
-  box-shadow: 0 4px 16px var(--color-primary-glow);
+  box-shadow: 0 0.25rem 1rem var(--color-primary-glow);
 }
 
 .crypto-start-button:hover,
 .crypto-challenge-form button:hover {
-  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.4);
+  box-shadow: 0 0.25rem 1rem rgba(239, 68, 68, 0.4);
 }
 
 /* ===== SIDE PANEL ===== */
@@ -128,14 +133,14 @@
 .crypto-side {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 1.125rem;
   border: 1px solid rgba(96, 165, 250, 0.28);
   background: rgba(15, 23, 42, 0.88);
 }
 
 .crypto-side-note {
-  padding: 14px 16px;
-  border-radius: 12px;
+  padding: 0.875rem 1rem;
+  border-radius: 0.75rem;
   background: rgba(255, 255, 255, 0.05);
   font-weight: 800;
   color: var(--color-primary);
@@ -154,40 +159,44 @@
 /* ===== STORAGE PREVIEW ===== */
 
 .crypto-storage-preview {
-  padding: 18px;
+  padding: 1.125rem;
 }
 
 .crypto-storage-preview pre {
   margin: 0;
   overflow-x: auto;
+  max-width: 100%;
 }
 
 .crypto-storage-preview code {
   color: var(--text-primary);
   font-size: 0.9rem;
   line-height: 1.6;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
 }
 
 /* ===== CHALLENGE PAGE ===== */
 
 .crypto-challenge-full {
-  padding: 24px;
+  padding: 1.125rem;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 0.875rem;
+  min-width: 0;
 }
 
 .crypto-challenge-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .crypto-back-button {
-  padding: 10px 14px;
+  padding: 0.625rem 0.875rem;
   border: none;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   background: var(--card-border);
   color: var(--text-primary);
   font-weight: 700;
@@ -197,50 +206,54 @@
 
 .crypto-challenge-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.9fr);
-  gap: 20px;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.9fr);
+  gap: 1rem;
   align-items: start;
+  min-width: 0;
 }
 
 .crypto-leak-box {
-  height: 500px;
-  padding: 18px;
-  border-radius: 14px;
+  height: 20.625rem;
+  padding: 0.75rem 0.875rem;
+  border-radius: 0.875rem;
   border: 1px solid var(--card-border);
   background: rgba(0, 0, 0, 0.28);
   overflow: auto;
+  min-width: 0;
 }
 
 .crypto-leak-box pre,
 .crypto-challenge-result pre {
   margin: 0;
   overflow-x: auto;
+  max-width: 100%;
 }
 
 .crypto-leak-box code,
 .crypto-challenge-result code {
   color: var(--text-primary);
-  font-size: 0.82rem;
-  line-height: 1.55;
+  font-size: 0.72rem;
+  line-height: 1.32;
   white-space: pre;
 }
 
 .crypto-challenge-side {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 0.75rem;
+  min-width: 0;
 }
 
 .crypto-challenge-card {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0.75rem;
 }
 
 .crypto-challenge-form {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 0.75rem;
 }
 
 .crypto-challenge-form input {
@@ -252,13 +265,21 @@
 }
 
 .crypto-challenge-result {
-  min-height: 180px;
-  overflow: auto;
+  min-height: 5.625rem;
+  overflow: hidden;
+}
+
+.crypto-challenge-result pre {
+  white-space: pre-wrap;
+}
+
+.crypto-challenge-result code {
+  white-space: pre-wrap;
 }
 
 /* ===== RESPONSIVE ===== */
 
-@media (max-width: 900px) {
+@media (max-width: 56.25rem) {
   .crypto-layout,
   .crypto-challenge-grid {
     grid-template-columns: 1fr;
@@ -270,6 +291,6 @@
   }
 
   .crypto-leak-box {
-    height: 320px;
+    height: 16.25rem;
   }
 }

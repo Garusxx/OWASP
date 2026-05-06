@@ -9,10 +9,11 @@ type Props = {
 function OwaspSection({ id, title, children }: Props) {
   return (
     <section id={id} className="owasp-section">
-      <h2 className="owasp-section-title">{title}</h2>
-
       <div className="owasp-section-content">
-        <div className="owasp-content">{children}</div>
+        <div className="owasp-content">
+          <h2 className="owasp-section-title">{title}</h2>
+          {children}
+        </div>
       </div>
     </section>
   );

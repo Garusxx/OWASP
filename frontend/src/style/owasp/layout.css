@@ -30,11 +30,11 @@
 .owasp-page.is-theme-animating::before {
   opacity: 0.95;
   transform: scale(1.08);
-  filter: blur(6px);
+  filter: blur(0.375rem);
 }
 
 .owasp {
-  height: calc(100vh - 88px);
+  height: calc(100vh - 5.5rem);
   overflow-y: auto;
   scroll-behavior: smooth;
   scrollbar-width: none;
