@@ -5,5 +5,12 @@ export type OwaspItem = {
 
 export type OwaspId =
   | "broken-access-control"
+  | "security-misconfiguration"
+  | "software-supply-chain-failures"
   | "cryptographic-failures"
-  | "injection";
+  | "injection"
+  | "insecure-design"
+  | "authentication-failures"
+  | "software-data-integrity-failures"
+  | "security-logging-alerting-failures"
+  | "exceptional-conditions";

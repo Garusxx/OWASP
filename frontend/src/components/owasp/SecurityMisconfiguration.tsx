@@ -1,96 +1,62 @@
-import "../../style/owasp/securityMisconfiguration.css";
+import Top10ChallengeSection from "./Top10ChallengeSection";
+import type { ChallengeSectionData } from "./Top10ChallengeSection";
 
 type Props = {
   isSecure: boolean;
 };
 
+const data: ChallengeSectionData = {
+  secureHeading: "Secure Configuration",
+  vulnerableHeading: "Security Misconfiguration",
+  summary:
+    "Security Misconfiguration happens when applications expose unsafe defaults, debug information, unnecessary services, or internal system details.",
+  explanation:
+    "Attackers often use misconfigured environments to gather sensitive information and turn a small issue into a larger compromise.",
+  demoTitle: "Server response preview",
+  securePreview: {
+    environment: "production",
+    debug: false,
+    error: "Internal server error",
+    exposedHeaders: ["content-security-policy", "x-content-type-options"],
+  },
+  vulnerablePreview: {
+    environment: "development",
+    debug: true,
+    database: {
+      host: "localhost",
+      user: "root",
+      password: "root123",
+    },
+    stackTrace: "Error: SQL syntax error near line 1...",
+  },
+  sideTitle: "What is the risk?",
+  risk:
+    "Exposed debug data, default credentials, and verbose errors can reveal how the application works internally.",
+  secureNote: "Secure production setup",
+  vulnerableNote: "Sensitive configuration exposed",
+  secureFix:
+    "Disable debug mode, remove default accounts, rotate secrets, hide stack traces, and expose only required services.",
+  link: "https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/",
+  challengeTitle: "Misconfiguration Challenge",
+  challengeDescription:
+    "Find the leaked database password in the vulnerable server response.",
+  challengePrompt: "Leaked database password",
+  expectedAnswers: ["root123"],
+  success: {
+    message: "Challenge completed",
+    leakedSecret: "root123",
+  },
+  failure: {
+    error: "Wrong value. Inspect the database configuration again.",
+  },
+  secureBlocked: {
+    error: "Blocked in secure mode",
+    reason: "Production responses do not expose database secrets.",
+  },
+};
+
 function SecurityMisconfiguration({ isSecure }: Props) {
-  return (
-    <div className="misconfiguration-layout">
-      <div className="misconfiguration-main">
-        <h3>
-          {isSecure
-            ? "Secure Configuration ✅"
-            : "Security Misconfiguration ❌"}
-        </h3>
-
-        <p>
-          Security Misconfiguration happens when applications expose unsafe
-          default settings, debug information, unnecessary services, or internal
-          system details.
-        </p>
-
-        <p>
-          Attackers often use misconfigured environments to gather sensitive
-          information and escalate attacks.
-        </p>
-
-        <div className="misconfiguration-demo-card">
-          <h4>Server response preview</h4>
-
-          <pre>
-            <code>
-              {isSecure
-                ? JSON.stringify(
-                    {
-                      environment: "production",
-                      debug: false,
-                      error: "Internal server error",
-                    },
-                    null,
-                    2,
-                  )
-                : JSON.stringify(
-                    {
-                      environment: "development",
-                      debug: true,
-                      database: {
-                        host: "localhost",
-                        user: "root",
-                        password: "root123",
-                      },
-                      stackTrace:
-                        "Error: SQL syntax error near line 1...",
-                    },
-                    null,
-                    2,
-                  )}
-            </code>
-          </pre>
-        </div>
-      </div>
-
-      <aside className="misconfiguration-side">
-        <h4>What is the risk?</h4>
-
-        <p>
-          Exposed debug information and insecure defaults can reveal internal
-          application details and sensitive credentials.
-        </p>
-
-        <div className="misconfiguration-side-note">
-          {isSecure
-            ? "✔ Secure production setup"
-            : "❌ Sensitive configuration exposed"}
-        </div>
-
-        <h4>Secure fix</h4>
-
-        <p>
-          Production applications should disable debug mode, hide stack traces,
-          rotate secrets, and expose only required services.
-        </p>
-
-        <a
-          href="https://owasp.org/Top10/A05_2021-Security_Misconfiguration/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Official OWASP definition
-        </a>
-      </aside>
-    </div>
-  );
+  return <Top10ChallengeSection isSecure={isSecure} data={data} />;
 }
 
 export default SecurityMisconfiguration;

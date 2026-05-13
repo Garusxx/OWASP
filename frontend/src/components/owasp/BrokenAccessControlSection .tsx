@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../../style/owasp/brokenAccessControlSection.css";
 
 type Props = {
   isSecure: boolean;
@@ -219,7 +218,7 @@ function BrokenAccessControlSection({ isSecure }: Props) {
         </div>
 
         <a
-          href="https://owasp.org/Top10/A01_2021-Broken_Access_Control/"
+          href="https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/"
           target="_blank"
           rel="noopener noreferrer"
         >

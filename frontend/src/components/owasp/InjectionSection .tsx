@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../../style/owasp/injectionSection.css";
 
 type Props = {
   isSecure: boolean;
@@ -332,7 +331,7 @@ function InjectionSection({ isSecure }: Props) {
         </p>
 
         <a
-          href="https://owasp.org/Top10/A03_2021-Injection/"
+          href="https://owasp.org/Top10/2025/A05_2025-Injection/"
           target="_blank"
           rel="noopener noreferrer"
         >

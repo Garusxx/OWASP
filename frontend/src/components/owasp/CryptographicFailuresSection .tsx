@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import bcrypt from "bcryptjs";
-import "../../style/owasp/cryptographicFailuresSection.css";
 
 type Props = {
   isSecure: boolean;
@@ -246,7 +245,7 @@ function CryptographicFailuresSection({ isSecure }: Props) {
         </div>
 
         <a
-          href="https://owasp.org/Top10/A02_2021-Cryptographic_Failures/"
+          href="https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/"
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -1,12 +1,13 @@
 import "../style/owasp/layout.css";
 import "../style/owasp/header.css";
-import "../style/owasp/sections.css";
 import "../style/owasp/toggle.css";
 import "../style/owasp/responsive.css";
 import "../style/owasp/animations.css";
+import "../style/owasp/OwaspRiskSections.css";
 
 import { useEffect, useRef, useState } from "react";
 import type { ComponentType } from "react";
+import { Link } from "react-router-dom";
 
 import OwaspSection from "../components/OwaspSection";
 import OwaspNav from "../components/OwaspNav";
@@ -18,24 +19,54 @@ import type { OwaspItem } from "../types/owasp";
 import BrokenAccessControlSection from "../components/owasp/BrokenAccessControlSection ";
 import CryptographicFailuresSection from "../components/owasp/CryptographicFailuresSection ";
 import InjectionSection from "../components/owasp/InjectionSection ";
+import AuthenticationFailures from "../components/owasp/AuthenticationFailures";
+import ExceptionalConditions from "../components/owasp/ExceptionalConditions";
+import InsecureDesign from "../components/owasp/InsecureDesign";
 import SecurityMisconfiguration from "../components/owasp/SecurityMisconfiguration";
+import SecurityLoggingAlertingFailures from "../components/owasp/SecurityLoggingAlertingFailures";
+import SoftwareDataIntegrityFailures from "../components/owasp/SoftwareDataIntegrityFailures";
+import SoftwareSupplyChainFailures from "../components/owasp/SoftwareSupplyChainFailures";
 
 const owaspItems: OwaspItem[] = [
   {
     id: "broken-access-control",
-    title: "A1: Broken Access Control",
+    title: "A01: Broken Access Control",
+  },
+  {
+    id: "security-misconfiguration",
+    title: "A02: Security Misconfiguration",
+  },
+  {
+    id: "software-supply-chain-failures",
+    title: "A03: Software Supply Chain Failures",
   },
   {
     id: "cryptographic-failures",
-    title: "A2: Cryptographic Failures",
+    title: "A04: Cryptographic Failures",
   },
   {
     id: "injection",
-    title: "A3: Injection",
+    title: "A05: Injection",
   },
   {
-    id: "security misconfiguration",
-    title: "A4: Security Misconfiguration",
+    id: "insecure-design",
+    title: "A06: Insecure Design",
+  },
+  {
+    id: "authentication-failures",
+    title: "A07: Authentication Failures",
+  },
+  {
+    id: "software-data-integrity-failures",
+    title: "A08: Software or Data Integrity Failures",
+  },
+  {
+    id: "security-logging-alerting-failures",
+    title: "A09: Security Logging and Alerting Failures",
+  },
+  {
+    id: "exceptional-conditions",
+    title: "A10: Mishandling of Exceptional Conditions",
   },
 ];
 
@@ -48,9 +79,15 @@ const sectionComponents: Record<
   ComponentType<SectionProps>
 > = {
   "broken-access-control": BrokenAccessControlSection,
+  "security-misconfiguration": SecurityMisconfiguration,
+  "software-supply-chain-failures": SoftwareSupplyChainFailures,
   "cryptographic-failures": CryptographicFailuresSection,
   injection: InjectionSection,
-  "security misconfiguration": SecurityMisconfiguration,
+  "insecure-design": InsecureDesign,
+  "authentication-failures": AuthenticationFailures,
+  "software-data-integrity-failures": SoftwareDataIntegrityFailures,
+  "security-logging-alerting-failures": SecurityLoggingAlertingFailures,
+  "exceptional-conditions": ExceptionalConditions,
 };
 
 function Owasp() {
@@ -112,6 +149,10 @@ function Owasp() {
       <div className="owasp-header">
         <h1>OWASP // SECURITY ANALYSIS</h1>
       </div>
+
+      <Link to="/" className="owasp-home-link" aria-label="Back to home page">
+        Home
+      </Link>
 
       <OwaspNav items={owaspItems} activeId={activeId} />
 

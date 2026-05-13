@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import "../style/OwaspSection.css";
 
 type Props = {
   id: string;
