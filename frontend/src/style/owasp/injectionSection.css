@@ -1,13 +1,58 @@
+.owasp-section#injection {
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.owasp-section#injection .owasp-section-content {
+  max-height: calc(100vh - 11.5rem);
+  overflow: auto;
+  scrollbar-color: var(--color-primary-soft) rgba(2, 6, 23, 0.35);
+  scrollbar-width: thin;
+}
+
+.owasp-section#injection .owasp-section-content::-webkit-scrollbar,
+.injection-query-preview pre::-webkit-scrollbar,
+.injection-result pre::-webkit-scrollbar,
+.injection-challenge-main-card pre::-webkit-scrollbar {
+  width: 0.625rem;
+  height: 0.625rem;
+}
+
+.owasp-section#injection .owasp-section-content::-webkit-scrollbar-track,
+.injection-query-preview pre::-webkit-scrollbar-track,
+.injection-result pre::-webkit-scrollbar-track,
+.injection-challenge-main-card pre::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: rgba(2, 6, 23, 0.35);
+}
+
+.owasp-section#injection .owasp-section-content::-webkit-scrollbar-thumb,
+.injection-query-preview pre::-webkit-scrollbar-thumb,
+.injection-result pre::-webkit-scrollbar-thumb,
+.injection-challenge-main-card pre::-webkit-scrollbar-thumb {
+  border: 0.125rem solid rgba(2, 6, 23, 0.35);
+  border-radius: 999px;
+  background: var(--color-primary-soft);
+}
+
+.owasp-section#injection .owasp-section-content::-webkit-scrollbar-thumb:hover,
+.injection-query-preview pre::-webkit-scrollbar-thumb:hover,
+.injection-result pre::-webkit-scrollbar-thumb:hover,
+.injection-challenge-main-card pre::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
 .injection-layout {
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
   gap: 2.5rem;
   align-items: start;
+  width: 100%;
+  max-width: 100%;
   min-width: 0;
 }
 
-.injection-main,
-.injection-challenge {
+.injection-main {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -15,36 +60,179 @@
 }
 
 .injection-main h3,
+.injection-main h4,
 .injection-side h4,
-.injection-challenge-header h3 {
+.injection-query-preview h4,
+.injection-result h4,
+.injection-challenge-header h3,
+.injection-challenge-main-card h4 {
   margin: 0;
   color: var(--color-primary);
 }
 
 .injection-main p,
-.injection-side p {
+.injection-side p,
+.injection-challenge-description {
   margin: 0;
   color: var(--text-secondary);
   line-height: 1.8;
 }
 
-.injection-side {
-  padding: 1.375rem;
-  border-radius: 1rem;
+/* ===== CARDS ===== */
+
+.injection-demo-card,
+.injection-query-preview,
+.injection-result,
+.injection-side,
+.injection-challenge-main-card {
   border: 1px solid var(--card-border);
+  border-radius: 1rem;
   background: rgba(255, 255, 255, 0.045);
   min-width: 0;
+  box-sizing: border-box;
+}
 
+.injection-demo-card {
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  overflow: hidden;
+}
+
+.injection-query-preview,
+.injection-result {
+  padding: 1.125rem;
+  background: rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+
+/* ===== INLINE CODE ===== */
+
+.injection-demo-card code {
+  padding: 0.1875rem 0.4375rem;
+  border-radius: 0.4375rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-primary);
+  font-weight: 700;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* ===== SEARCH ===== */
+
+.injection-search-row,
+.injection-challenge-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.875rem;
+  min-width: 0;
+}
+
+.injection-search-row input,
+.injection-challenge-form input {
+  width: 100%;
+  min-width: 0;
+  padding: 0.75rem 0.875rem;
+  border-radius: 0.625rem;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text-primary);
+  box-sizing: border-box;
+}
+
+.injection-search-row input:focus,
+.injection-challenge-form input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.125rem var(--color-primary-glow);
+}
+
+.injection-search-row button,
+.injection-challenge-form button,
+.injection-start-button,
+.injection-back-button {
+  padding: 0.875rem 1rem;
+  border-radius: 0.75rem;
+  border: none;
+  background: #ef4444;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.injection-search-row button:hover,
+.injection-challenge-form button:hover,
+.injection-start-button:hover,
+.injection-back-button:hover {
+  transform: translateY(-0.0625rem);
+  box-shadow: 0 0.25rem 1rem rgba(239, 68, 68, 0.45);
+}
+
+/* ===== SQL + RESPONSE ===== */
+
+.injection-query-preview h4,
+.injection-result h4 {
+  margin-bottom: 0.875rem;
+}
+
+.injection-query-preview pre,
+.injection-result pre,
+.injection-challenge-main-card pre {
+  margin: 0;
+  max-width: 100%;
+  max-height: 14rem;
+  overflow: auto;
+  scrollbar-color: var(--color-primary-soft) rgba(2, 6, 23, 0.35);
+  scrollbar-width: thin;
+  line-height: 1.7;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+.injection-query-preview code,
+.injection-result code,
+.injection-challenge-main-card code {
+  display: block;
+  max-width: 100%;
+  color: var(--text-primary);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* ===== SIDE PANEL ===== */
+
+.injection-side {
+  padding: 1.375rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  border: 1px solid rgba(96, 165, 250, 0.28);
+  background: rgba(15, 23, 42, 0.88);
+}
+
+.injection-side h4 {
+  margin-bottom: 0.875rem;
+  font-size: 1.15rem;
+}
+
+.injection-side p {
+  margin: 0 0 1rem;
+}
+
+.injection-side-note,
+.injection-attack-info {
+  margin: 1.125rem 0;
+  padding: 0.75rem 0.875rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.045);
 }
 
 .injection-side-note {
-  padding: 0.75rem 0.875rem;
-  border-radius: 0.75rem;
-  background: rgba(255, 255, 255, 0.04);
-
   font-weight: 700;
   color: var(--color-primary);
 }
@@ -53,59 +241,101 @@
   color: var(--text-secondary);
 }
 
-.injection-start-button {
-  width: 100%;
-
-  padding: 0.75rem 0.875rem;
-
-  border: none;
-  border-radius: 0.75rem;
-
-  background: #ef4444;
-  color: white;
-
-  font-weight: 800;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease;
+.injection-side a {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: none;
+  overflow-wrap: anywhere;
 }
 
-.injection-start-button:hover {
-  transform: translateY(-0.0625rem);
-  box-shadow: 0 0.25rem 1rem rgba(239, 68, 68, 0.4);
+.injection-side a:hover {
+  text-decoration: underline;
+}
+
+.injection-side a:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.125rem var(--color-primary-glow);
+  border-radius: 0.25rem;
+}
+
+.injection-start-button {
+  width: 100%;
+  margin-top: 0.5rem;
 }
 
 /* ===== CHALLENGE ===== */
 
-.injection-challenge {
-  gap: 1.75rem;
+.injection-challenge-full {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .injection-challenge-header {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
   align-items: center;
 }
 
+.injection-challenge-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 1.5rem;
+  align-items: start;
+  width: 100%;
+  min-width: 0;
+}
+
+.injection-challenge-main-card,
+.injection-challenge-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.injection-challenge-main-card {
+  padding: 1.25rem;
+}
+
+.injection-challenge-side {
+  width: 100%;
+}
+
 .injection-back-button {
-  padding: 0.625rem 0.875rem;
-
-  border: none;
-  border-radius: 0.625rem;
-
-  background: var(--card-border);
-  color: var(--text-primary);
-
-  cursor: pointer;
+  flex-shrink: 0;
 }
 
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 56.25rem) {
-  .injection-layout {
+  .owasp-section#injection .owasp-section-content {
+    max-height: calc(100vh - 8.75rem);
+  }
+
+  .injection-layout,
+  .injection-challenge-grid {
     grid-template-columns: 1fr;
+  }
+
+  .injection-side {
+    padding: 1.125rem;
+  }
+
+  .injection-search-row,
+  .injection-challenge-form {
+    grid-template-columns: 1fr;
+  }
+
+  .injection-search-row button,
+  .injection-challenge-form button {
+    width: 100%;
+  }
+
+  .injection-challenge-header {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
